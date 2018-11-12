@@ -45,6 +45,7 @@ def identity_block(input_tensor, kernel_size, filters, stage, block,
                       kernel_initializer='he_normal',
                       kernel_regularizer=regularizers.l2(l2_reg),
                       name=conv_name_base + '2b')(x)
+# batch normalization is used to normalize weights at ONE LAYER
     x = layers.BatchNormalization(axis=bn_axis, name=bn_name_base + '2b',
                                   momentum=bn_mom, epsilon=1e-5)(x)
     x = layers.Activation('relu')(x)
